@@ -1,0 +1,21 @@
+{
+  "name": "soq-template-merchant-pos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Merchant point-of-sale on Soqucoin Lightning. A Builders League starter template: sign a post-quantum payment request, verify it client-side, settle.",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/pos.js",
+    "demo": "npm start"
+  },
+  "keywords": ["soqucoin", "lightning", "point-of-sale", "merchant", "post-quantum", "invoice"],
+  "license": "MIT",
+  "dependencies": {
+    "soq-lightning-sdk": "^0.1.0-alpha.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.11.0"
+  }
+}
