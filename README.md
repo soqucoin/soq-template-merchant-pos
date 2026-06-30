@@ -78,4 +78,8 @@ Creating and verifying the payment request is fully real and offline, and that i
 
 A signed payment request that a customer can verify offline is tamper-evident and quantum-safe: the amount and destination cannot be altered without breaking the signature, and the signature stays valid for decades. That is a real advantage for retail, vending, and any unattended terminal.
 
+## Legal
+
+This template is provided for educational use on a test network, "AS IS" and without warranty, under the MIT License. It is a technical illustration, not a recommendation to pursue any particular business or use case, and it is not legal, financial, or tax advice. You are solely responsible for ensuring that anything you build with it complies with all applicable laws and regulations, including securities, money-transmission/MSB, AML/KYC, sanctions, tax, consumer-protection, and data-privacy laws. Some use cases are heavily regulated and may require licensing. Obtain your own legal advice before launching. See the Builders League terms: https://soqu.org/terms
+
 Build something with this and apply to the Builders League at soqu.org/build/apply.
