@@ -31,14 +31,18 @@ async function main(): Promise<void> {
   const till = mlDsaKeygen();
   const customer = mlDsaKeygen();
 
-  console.log("1. Opening channels with the LSP (stagenet faucet)…");
-  const merchantCh = await ln.fundAndOpen({
+  // Plain hosted opens (no faucet): instant and repeatable — the stagenet
+  // faucet rate-limits to one drip per IP per 10 minutes, which a two-channel
+  // demo would trip every run. Use ln.fundAndOpen() instead when you want a
+  // channel backed by a real faucet drip.
+  console.log("1. Opening channels with the LSP…");
+  const merchantCh = await ln.openChannel({
     pubKeyHex: hex(till.publicKey),
     address: onchain.deriveAddress(till.publicKey), // real ssq1p… settlement address
     capacitySat: 50_000_000, // 0.5 SOQ
     name: "pos-merchant",
   });
-  const customerCh = await ln.fundAndOpen({
+  const customerCh = await ln.openChannel({
     pubKeyHex: hex(customer.publicKey),
     address: onchain.deriveAddress(customer.publicKey),
     capacitySat: 50_000_000,
