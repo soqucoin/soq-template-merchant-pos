@@ -36,6 +36,28 @@ Sale complete. Print receipt.
 
 > This template depends on `soq-lightning-sdk` from npm, so a plain `npm install` works.
 
+## Get paid for real (stagenet)
+
+The offline demo shows the cryptography. This one moves real stagenet value
+through the hosted LSP — the merchant creates an invoice, a customer channel
+pays it, and the merchant's balance grows when it settles:
+
+```bash
+LSP_URL=https://lsp.soqu.org npm run live
+```
+
+Under the hood it is four calls: `fundAndOpen` (stagenet faucet), then
+
+```ts
+const inv = await ln.createInvoice(myChannel.channel_id, totalSat, { memo: "Espresso" });
+// show inv.uri (soqln:…) as a QR — SoquShield's Pay tab can settle it
+const settled = await ln.awaitInvoicePaid(inv.invoice_id);
+```
+
+Settlement is custodial on the hosted beta (the LSP hub debits the payer and
+credits you atomically). The PQ-signed `soq1ln1…` invoices in the offline demo
+are the trust-minimized target; this API keeps its shape when that rail lands.
+
 ## How it works
 
 The merchant side is one small class, `Merchant` (see `src/merchant.ts`):
