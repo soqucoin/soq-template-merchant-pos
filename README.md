@@ -38,9 +38,10 @@ Sale complete. Print receipt.
 
 ## Get paid for real (stagenet)
 
-The offline demo shows the cryptography. This one moves real stagenet value
-through the hosted LSP — the merchant creates an invoice, a customer channel
-pays it, and the merchant's balance grows when it settles:
+The offline demo shows the cryptography. This one moves stagenet test coins
+through the test-network Lightning service provider: the merchant creates an
+invoice, a customer channel pays it, and the merchant's balance grows when it
+settles:
 
 ```bash
 LSP_URL=https://lsp.soqu.org npm run live
@@ -54,9 +55,11 @@ const inv = await ln.createInvoice(myChannel.channel_id, totalSat, { memo: "Espr
 const settled = await ln.awaitInvoicePaid(inv.invoice_id);
 ```
 
-Settlement is custodial on the hosted beta (the LSP hub debits the payer and
-credits you atomically). The PQ-signed `soq1ln1…` invoices in the offline demo
-are the trust-minimized target; this API keeps its shape when that rail lands.
+Settlement on the public test network runs through a Lightning service provider
+that acts as channel counterparty. Test coins only. The self-custodial channel
+mode with unilateral exit is the release design. The PQ-signed `soq1ln1…`
+invoices in the offline demo are the trust-minimized target; this API keeps its
+shape when that rail lands.
 
 ## How it works
 
