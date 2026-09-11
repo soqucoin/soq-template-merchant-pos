@@ -3,14 +3,13 @@
 //   LSP_URL=https://lsp.soqu.org npm run live
 //
 // The offline demo (npm start) shows the post-quantum invoice cryptography.
-// This one moves real stagenet value: the merchant opens a channel with the
-// hosted LSP, creates an LSP invoice for the cart, and a customer channel pays
-// it — the merchant's channel balance grows when it settles.
+// This one moves stagenet test coins: the merchant opens a channel with the
+// test-network LSP, creates an LSP invoice for the cart, and a customer channel
+// pays it; the merchant's channel balance grows when it settles.
 //
-// These are LSP invoices (custodial receive: the hub atomically debits the
-// payer and credits the merchant — hosted beta). The PQ-signed soq1ln1…
-// invoices in the offline demo are the trust-minimized target; this API keeps
-// its shape when that rail lands.
+// These are LSP invoices, settled by the LSP acting as channel counterparty on
+// the public test network. The PQ-signed soq1ln1… invoices in the offline demo
+// are the trust-minimized target; this API keeps its shape when that rail lands.
 
 import { SoqLightning, mlDsaKeygen, onchain } from "soq-lightning-sdk";
 
